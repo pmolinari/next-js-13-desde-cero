@@ -5,13 +5,8 @@ export function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("my-custom-header", "pepitoooooo");
 
-  console.log("******************************************************");
-  console.log("******************************************************");
-  console.log("******************************************************");
-  console.log("******************************************************");
-
   if (request.nextUrl.pathname.startsWith("/locations")) {
-    const isAuthenticated = true;
+    const isAuthenticated = process.env.NEXT_PUBLIC_AUTHENTICATED === "true";
     if (!isAuthenticated)
       return NextResponse.redirect(new URL("/login", request.url));
   }
