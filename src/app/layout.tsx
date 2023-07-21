@@ -1,9 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 
-import Link from "next/link";
 import { Inter } from "next/font/google";
-import { Routes } from "../models";
+import { Provider } from "@/components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body>{children}</body>
+      <body>
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }
